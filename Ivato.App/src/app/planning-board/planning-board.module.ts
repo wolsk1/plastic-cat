@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
+import { PlanningBoardComponent } from './planning-board.component';
+import { routing } from './planning-board.routing';
 
 @NgModule({
-  imports:      [
+  imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    routing
   ],
   declarations: [
-    AppComponent
+    PlanningBoardComponent
   ],
-  bootstrap:    [ AppComponent ]
+  exports: [
+    PlanningBoardComponent
+  ]
 })
 export class PlanningBoardModule { }
