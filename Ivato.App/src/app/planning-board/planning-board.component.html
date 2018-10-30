@@ -4,22 +4,22 @@
       To do
     </div>
     <div class="column-body">
-      <div class="item">Item to do</div>
+        <ivato-board-item *ngFor="let item of itemsToDo" [item]="item">
+          </ivato-board-item>
     </div>
   </div>
   <div class="column">
     <div class="column-head"> In Progress </div>
     <div class="column-body">
-        <div class="item">Item in progress</div>
-        <div class="item">Item in progress</div>
+        <ivato-board-item *ngFor="let item of itemsInProgress" [item]="item">
+          </ivato-board-item>
     </div>
   </div>
   <div class="column">
     <div class="column-head"> Done </div>
     <div class="column-body">
-        <div class="item">Item done</div>
-        <div class="item">Item done</div>
-        <div class="item">Item done</div>
+      <ivato-board-item *ngFor="let item of itemsDone" [item]="item">
+      </ivato-board-item>
     </div>
   </div>
 </div>

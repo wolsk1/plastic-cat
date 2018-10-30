@@ -5,6 +5,7 @@ import {
   MatGridListModule
 } from '@angular/material';
 
+import { BoardItemComponent } from './fragments';
 import { PlanningBoardComponent } from './planning-board.component';
 import { routing } from './planning-board.routing';
 
@@ -17,10 +18,9 @@ import { routing } from './planning-board.routing';
     routing
   ],
   declarations: [
-    PlanningBoardComponent
+    PlanningBoardComponent,
+    BoardItemComponent
   ],
-  exports: [
-    PlanningBoardComponent
-  ]
+  exports: [ ]
 })
 export class PlanningBoardModule { }
