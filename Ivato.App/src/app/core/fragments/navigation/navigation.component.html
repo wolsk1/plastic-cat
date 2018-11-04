@@ -1,11 +1,10 @@
 <mat-nav-list>
+  <ng-container *ngFor="let navConfig of navigationConfigs">
     <mat-divider></mat-divider>
-    <mat-list-item [routerLink]="[ '/' ]" routerLinkActive="active">
-      <mat-icon>home</mat-icon>Sākums
+    <mat-list-item [routerLink]="navConfig.linkParams" routerLinkActive="active">
+      <mat-icon>{{navConfig.icon}}</mat-icon>
+      <span>{{navConfig.displayName}}</span>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item [routerLink]="[ '/planning-board' ]" routerLinkActive="active">
-      <mat-icon>assignment</mat-icon> Plānošana
-    </mat-list-item>
-    <mat-divider></mat-divider>
-  </mat-nav-list>
+  </ng-container>
+</mat-nav-list>
