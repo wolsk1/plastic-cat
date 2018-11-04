@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { BoardItem } from '../../models/board-item.models';
+import { BoardItem, Order, OrderStatus } from '../../models/board-item.models';
+import { Router } from '@angular/router';
 
 /**
  * @title Drag&Drop connected sorting
@@ -8,23 +9,29 @@ import { BoardItem } from '../../models/board-item.models';
 @Component({
   selector: 'ivato-item-lists',
   templateUrl: './item-lists.component.html',
-  styleUrls: [ './item-lists.component.css' ],
+  styleUrls: ['./item-lists.component.css'],
 })
-export class ItemListsComponent {
-  todo: BoardItem[] = [
-    { id: '545345435', title: 'Plastic barbie' },
-    { id: '133445577', title: 'Skull head' },
-    { id: '9768567657', title: 'Bottle' },
-    { id: '6453453454', title: 'Case' }
-  ];
+export class ItemListsComponent implements OnInit {
+  constructor(
+    private router: Router
+  ) {
+    console.log(this.router.config)
+  }
 
-  inProgress: BoardItem[] = [
-    { id: '879798784564', title: 'Skrew' }
-  ];
+  public todo: Order[] = [];
 
-  done: BoardItem[] = [
-    { id: '6546445', title: 'Rabbit' }
-  ];
+  public inProgress: Order[] = [];
+
+  public done: Order[] = [];
+
+  public ngOnInit(): void {
+    this.todo = [
+      { id: '545345435', title: 'Plastic barbie', status: OrderStatus.toDo },
+      { id: '133445577', title: 'Skull head', status: OrderStatus.toDo },
+      { id: '9768567657', title: 'Bottle', status: OrderStatus.toDo },
+      { id: '6453453454', title: 'Case', status: OrderStatus.toDo }
+    ];
+  }
 
   drop(event: CdkDragDrop<BoardItem[]>) {
     if (event.previousContainer === event.container) {
@@ -40,5 +47,10 @@ export class ItemListsComponent {
       event.container.data,
       event.previousIndex,
       event.currentIndex);
+
+  }
+
+  public openDetails(item: BoardItem): void {
+    this.router.navigate(['details', item.id]);
   }
 }

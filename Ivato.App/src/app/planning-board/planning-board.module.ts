@@ -9,15 +9,21 @@ import {
   MatGridListModule
 } from '@angular/material';
 
-import { BoardItemComponent, ItemListsComponent } from './fragments';
+import {
+  BoardItemComponent,
+  ItemListsComponent,
+  OrderDetailsComponent
+} from './fragments';
 import { PlanningBoardComponent } from './planning-board.component';
 import { routing } from './planning-board.routing';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     DragDropModule,
     ScrollingModule,
     CdkTableModule,
@@ -28,7 +34,8 @@ import { routing } from './planning-board.routing';
   declarations: [
     PlanningBoardComponent,
     BoardItemComponent,
-    ItemListsComponent
+    ItemListsComponent,
+    OrderDetailsComponent
   ],
   exports: []
 })
