@@ -10,6 +10,7 @@ import {
   MatDividerModule
 } from '@angular/material';
 
+import { NavigationComponent } from './fragments';
 
 @NgModule({
   imports: [
@@ -23,8 +24,10 @@ import {
     MatDividerModule
   ],
   declarations: [
+    NavigationComponent
   ],
   exports: [
+    NavigationComponent
   ]
 })
-export class SharedModule { }
+export class CoreModule { }
