@@ -18,6 +18,11 @@ export class NavigationComponent {
       displayName: 'Pasūtījumi',
       icon: 'assignment',
       linkParams: ['/planning-board']
+    },
+    {
+      displayName: 'Klienti',
+      icon: 'group',
+      linkParams: ['/']
     }
   ]
 }
