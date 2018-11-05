@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlasticCat.Api", "PlasticCat.Api\PlasticCat.Api.csproj", "{CCC9F38E-EA70-4170-A6C8-E1F0883FE946}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlasticCat", "PlasticCat\PlasticCat.csproj", "{0D325994-D747-4B7E-97EB-F9EDD355F981}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCC9F38E-EA70-4170-A6C8-E1F0883FE946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC9F38E-EA70-4170-A6C8-E1F0883FE946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC9F38E-EA70-4170-A6C8-E1F0883FE946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC9F38E-EA70-4170-A6C8-E1F0883FE946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D325994-D747-4B7E-97EB-F9EDD355F981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D325994-D747-4B7E-97EB-F9EDD355F981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D325994-D747-4B7E-97EB-F9EDD355F981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D325994-D747-4B7E-97EB-F9EDD355F981}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A846C454-96D8-456D-9248-F1582C9D9246}
+	EndGlobalSection
+EndGlobal
