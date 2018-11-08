@@ -23,6 +23,16 @@ export class NavigationComponent {
       displayName: 'Klienti',
       icon: 'group',
       linkParams: ['/']
+    },
+    {
+      displayName: 'Pamatlidzekli',
+      icon: 'work',
+      linkParams: ['/']
+    },
+    {
+      displayName: 'Gramatvediba',
+      icon: 'tab',
+      linkParams: ['/']
     }
   ]
 }
