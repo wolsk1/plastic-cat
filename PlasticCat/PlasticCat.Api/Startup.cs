@@ -75,7 +75,7 @@ namespace PlasticCat.Api
 
         private static void ConfigureWebPages(IAppBuilder app, string wwwroot)
         {
-            app.Map("/auctor", pipeline =>
+            app.Map("/plastic-cat", pipeline =>
             {
                 pipeline.Use((context, next) =>
                 {
