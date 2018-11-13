@@ -21,7 +21,13 @@
         internal static readonly string AppName = Utils.GetAppSettingsValue<string>("app:name");
 
         internal static readonly string DbSchema = Utils.GetAppSettingsValue<string>("db:schema");
+
         internal static readonly string ErrorPage = Utils.GetAppSettingsValue<string>("app:error-document");
+
         internal static readonly string DefaultPage = Utils.GetAppSettingsValue<string>("app:default-document");
+
+        internal static readonly string AppBaseUrl = Utils.GetAppSettingsValue<string>("app:base-url");
+
+        internal static readonly string AppErrorUrl = Utils.GetAppSettingsValue<string>("app:error-url");
     }
 }

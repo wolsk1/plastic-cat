@@ -75,7 +75,9 @@ namespace PlasticCat.Api
 
         private static void ConfigureWebPages(IAppBuilder app, string wwwroot)
         {
-            app.Map("/plastic-cat", pipeline =>
+            var appBaseUrl = string.IsNullOrEmpty(AppSettings.AppBaseUrl) ? "app" : AppSettings.AppBaseUrl;
+
+            app.Map($"/{appBaseUrl}", pipeline =>
             {
                 pipeline.Use((context, next) =>
                 {
@@ -83,12 +85,12 @@ namespace PlasticCat.Api
 
                     return SendHtmlFile(
                         context,
-                        path.Substring(0, path.LastIndexOf("auctor", StringComparison.OrdinalIgnoreCase)),
+                        path.Substring(0, path.LastIndexOf(appBaseUrl, StringComparison.OrdinalIgnoreCase)),
                         Path.Combine(wwwroot, AppSettings.DefaultPage));
                 });
             });
 
-            app.Map("/error", pipeline =>
+            app.Map($"/{AppSettings.AppErrorUrl}", pipeline =>
             {
                 pipeline.Use((context, next) =>
                 {
@@ -96,7 +98,7 @@ namespace PlasticCat.Api
 
                     return SendHtmlFile(
                         context,
-                        path.Substring(0, path.LastIndexOf("error", StringComparison.OrdinalIgnoreCase)),
+                        path.Substring(0, path.LastIndexOf(AppSettings.AppErrorUrl, StringComparison.OrdinalIgnoreCase)),
                         Path.Combine(wwwroot, AppSettings.ErrorPage));
                 });
             });
