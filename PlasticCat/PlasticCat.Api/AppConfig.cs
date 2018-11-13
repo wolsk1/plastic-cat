@@ -1,6 +1,6 @@
 ﻿namespace PlasticCat.Api
 {
-    internal static class AppSettings
+    internal static class AppConfig
     {
         internal static readonly bool CorsEnabled = Utils.GetAppSettingsValue("cors:enabled", true);
 
@@ -29,5 +29,7 @@
         internal static readonly string AppBaseUrl = Utils.GetAppSettingsValue<string>("app:base-url");
 
         internal static readonly string AppErrorUrl = Utils.GetAppSettingsValue<string>("app:error-url");
+
+        internal static readonly string DbConnectionString = Utils.GetConnectionString("pc-db");
     }
 }

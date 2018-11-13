@@ -26,9 +26,9 @@ namespace PlasticCat.Api
             {
                 Version = version,
                 BasePath = basePath,
-                ApiPath = $"{request.Scheme}://{request.Host.Value}/{basePath}{AppSettings.ApiPrefix}",
+                ApiPath = $"{request.Scheme}://{request.Host.Value}/{basePath}{AppConfig.ApiPrefix}",
                 ConnectionProtocol = request.Scheme,
-                AppName = AppSettings.AppName
+                AppName = AppConfig.AppName
             }, serializerSettings);
         }
     }

@@ -115,6 +115,5 @@ namespace PlasticCat
 
             return value.ConnectionString;
         }
-
     }
 }
