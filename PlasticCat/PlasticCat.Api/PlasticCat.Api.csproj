@@ -177,6 +177,11 @@
     <Compile Include="AutofacConfig.cs" />
     <Compile Include="AutofacInitializer.cs" />
     <Compile Include="ConnectionStrings.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Db\DbManager.cs" />
+    <Compile Include="Domain\Employee.cs" />
     <Compile Include="NoCacheHeaderFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsHelper.cs" />
