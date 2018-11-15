@@ -2,13 +2,18 @@ export interface BoardItem {
   id: string;
   title: string;
 }
+
 export interface Order {
   id: string;
-  title: string;
+  subject: string;
+  description: string;
   status: OrderStatus;
+  clientId: string;
 }
+
 export enum OrderStatus {
-  toDo = 'todo',
-  inProgress = 'inprogress',
-  done = 'done'
+  toDo,
+  inProgress,
+  blocked,
+  done
 }

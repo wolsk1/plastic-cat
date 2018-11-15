@@ -13,6 +13,7 @@ import {
 import { routing } from './planning-board.routing';
 import { PLANNING_FRAGMENTS } from './fragments';
 import { PLANNING_PAGES } from './pages';
+import { PLANNING_SERVICES } from './services';
 
 @NgModule({
   imports: [
@@ -29,6 +30,9 @@ import { PLANNING_PAGES } from './pages';
   declarations: [
     PLANNING_FRAGMENTS,
     PLANNING_PAGES
+  ],
+  providers:[
+    PLANNING_SERVICES
   ],
   exports: []
 })

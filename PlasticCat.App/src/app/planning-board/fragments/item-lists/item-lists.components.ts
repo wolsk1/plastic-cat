@@ -25,12 +25,7 @@ export class ItemListsComponent implements OnInit {
   public done: Order[] = [];
 
   public ngOnInit(): void {
-    this.todo = [
-      { id: '545345435', title: 'Plastic barbie', status: OrderStatus.toDo },
-      { id: '133445577', title: 'Skull head', status: OrderStatus.toDo },
-      { id: '9768567657', title: 'Bottle', status: OrderStatus.toDo },
-      { id: '6453453454', title: 'Case', status: OrderStatus.toDo }
-    ];
+
   }
 
   drop(event: CdkDragDrop<BoardItem[]>) {

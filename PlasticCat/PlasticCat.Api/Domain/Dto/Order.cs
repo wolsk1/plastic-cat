@@ -7,6 +7,7 @@
         public Guid Id { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
+        public OrderStatus Status { get; set; }
         public Guid ClientId { get; set; }
     }
 }
