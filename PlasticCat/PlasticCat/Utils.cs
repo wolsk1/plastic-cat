@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
 
 namespace PlasticCat
 {
@@ -114,6 +115,19 @@ namespace PlasticCat
             var value = ConfigurationManager.ConnectionStrings[name];
 
             return value.ConnectionString;
+        }
+
+        public static void TrySetPropertyValue<TObject>(TObject @object, string propertyName, object propertyValue)
+        {
+            var objectType = typeof(TObject);
+            var property = objectType.GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance);
+
+            if (null == property || !property.CanWrite)
+            {
+                return;
+            }
+
+            property.SetValue(@object, Convert.ChangeType(propertyValue, property.PropertyType), null);
         }
     }
 }

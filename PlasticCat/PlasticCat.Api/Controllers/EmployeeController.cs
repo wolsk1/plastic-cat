@@ -1,18 +1,15 @@
-﻿using System.Data.SqlClient;
-using System.Web.Http;
-using PlasticCat.Api.Db;
+﻿using System.Web.Http;
 using PlasticCat.Api.Domain;
+using PlasticCat.Db;
 
 namespace PlasticCat.Api.Controllers
 {
     [RoutePrefix("employees")]
     public class EmployeeController : BaseApiController
     {
-        private readonly DbManager dbManager;
-        //private readonly IRepository<Client, Client> consultations;
-        //private INpgProvider provider;
+        private readonly IDbManager dbManager;
 
-        public EmployeeController(DbManager dbManager)
+        public EmployeeController(IDbManager dbManager)
         {
             this.dbManager = dbManager;
         }
@@ -21,7 +18,9 @@ namespace PlasticCat.Api.Controllers
         [Route("get")]
         public IHttpActionResult List()
         {
-            return Ok(dbManager.ExecuteQueryFunc(dbManager.ExecuteQuery<Employee>, new SqlCommand("select * from employee")));
+            return Ok(dbManager.ExecuteQueryFunc(
+                dbManager.ExecuteQuery<Employee>, 
+                SqlHelper.SelectAll(Tables.Order.ToString())));
         }
     }
 }

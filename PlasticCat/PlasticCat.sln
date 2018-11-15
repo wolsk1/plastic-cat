@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlasticCat.Api", "PlasticCa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlasticCat", "PlasticCat\PlasticCat.csproj", "{0D325994-D747-4B7E-97EB-F9EDD355F981}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlasticCat.Db", "PlasticCat.Db\PlasticCat.Db.csproj", "{6EA73946-59D4-491F-8C54-FFC61E3668AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0D325994-D747-4B7E-97EB-F9EDD355F981}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D325994-D747-4B7E-97EB-F9EDD355F981}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D325994-D747-4B7E-97EB-F9EDD355F981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EA73946-59D4-491F-8C54-FFC61E3668AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EA73946-59D4-491F-8C54-FFC61E3668AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EA73946-59D4-491F-8C54-FFC61E3668AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EA73946-59D4-491F-8C54-FFC61E3668AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

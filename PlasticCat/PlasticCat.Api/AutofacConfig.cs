@@ -1,4 +1,4 @@
-﻿using PlasticCat.Api.Db;
+﻿using PlasticCat.Db;
 
 namespace PlasticCat.Api
 {
@@ -17,9 +17,11 @@ namespace PlasticCat.Api
         }
 
         private static void RegisterDatabaseComponents(ContainerBuilder builder)
-        {            
+        {
             builder.RegisterType<DbManager>()
-                .AsSelf();
+                .As<IDbManager>()
+                .SingleInstance()
+                .WithParameter("connectionString", AppConfig.DbConnectionString);
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
         }

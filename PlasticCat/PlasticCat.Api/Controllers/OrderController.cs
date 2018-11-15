@@ -1,26 +1,26 @@
 ﻿using System.Web.Http;
+using PlasticCat.Api.Domain;
+using PlasticCat.Db;
 
 namespace PlasticCat.Api.Controllers
 {
     [RoutePrefix("orders")]
     public class OrderController : BaseApiController
     {
-        //private readonly IRepository<Client, Client> consultations;
-        //private INpgProvider provider;
+        private readonly IDbManager dbManager;
 
-        public OrderController()
+        public OrderController(IDbManager dbManager)
         {
-
+            this.dbManager = dbManager;
         }
 
         [HttpGet]
         [Route("get")]
         public IHttpActionResult List()
         {
-            //var success = await provider.GetRecordsAsync<Client>("clients");
-
-            //return Ok(success);
-            return Ok();
+            return Ok(dbManager.ExecuteQueryFunc(
+                dbManager.ExecuteQuery<Order>, 
+                SqlHelper.SelectAll(Tables.Order.ToString())));
         }
     }
 }
