@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -9,15 +10,9 @@ import {
   MatGridListModule
 } from '@angular/material';
 
-import {
-  BoardItemComponent,
-  ItemListsComponent,
-  OrderDetailsComponent
-} from './fragments';
-import { PlanningBoardComponent } from './planning-board.component';
 import { routing } from './planning-board.routing';
-import { HttpClientModule } from '@angular/common/http';
-
+import { PLANNING_FRAGMENTS } from './fragments';
+import { PLANNING_PAGES } from './pages';
 
 @NgModule({
   imports: [
@@ -32,10 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     routing
   ],
   declarations: [
-    PlanningBoardComponent,
-    BoardItemComponent,
-    ItemListsComponent,
-    OrderDetailsComponent
+    PLANNING_FRAGMENTS,
+    PLANNING_PAGES
   ],
   exports: []
 })
