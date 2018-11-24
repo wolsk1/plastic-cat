@@ -22,7 +22,7 @@ export class NavigationComponent {
     {
       displayName: 'Klienti',
       icon: 'group',
-      linkParams: ['/']
+      linkParams: ['/clients']
     },
     {
       displayName: 'Pamatlidzekli',
