@@ -182,6 +182,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Domain\Dto\Employee.cs" />
     <Compile Include="Domain\Dto\Order.cs" />
+    <Compile Include="Domain\OrderStatus.cs" />
     <Compile Include="Domain\Tables.cs" />
     <Compile Include="NoCacheHeaderFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

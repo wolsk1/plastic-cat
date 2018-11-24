@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Order, OrderStatus } from '../../models/board-item.models';
 
 @Component({
-  selector: 'ivato-order-details',
+  selector: 'pc-order-details',
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss']
 })
@@ -15,15 +15,5 @@ export class OrderDetailsComponent implements OnInit {
   public order: Order;
 
   public ngOnInit(): void {
-    this.order = {
-      id: '43465476566',
-      title: 'Mock title',
-      status: OrderStatus.inProgress
-    }
-    // this.route.params.subscribe((params)=> {
-    //   if(params['orderId']){
-
-    //   }
-    // })
   }
 }

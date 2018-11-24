@@ -9,6 +9,8 @@ import {
   MatListModule,
   MatDividerModule
 } from '@angular/material';
+import { HttpService } from './services/http.service';
+import { SHARED_SERVICES } from './services';
 
 
 @NgModule({
@@ -23,6 +25,9 @@ import {
     MatDividerModule
   ],
   declarations: [
+  ],
+  providers:[
+    SHARED_SERVICES
   ],
   exports: [
   ]

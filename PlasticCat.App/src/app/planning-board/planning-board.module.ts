@@ -14,6 +14,7 @@ import { routing } from './planning-board.routing';
 import { PLANNING_FRAGMENTS } from './fragments';
 import { PLANNING_PAGES } from './pages';
 import { PLANNING_SERVICES } from './services';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { PLANNING_SERVICES } from './services';
     HttpClientModule,
     DragDropModule,
     ScrollingModule,
+    SharedModule,
     CdkTableModule,
     CdkTreeModule,
     MatGridListModule,
