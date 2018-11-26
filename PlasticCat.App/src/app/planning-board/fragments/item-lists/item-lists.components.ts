@@ -2,38 +2,49 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { BoardItem, Order, OrderStatus } from '../../models/board-item.models';
 import { Router } from '@angular/router';
+import { OrderService } from '../../services/order.service';
+import { Subscription } from 'rxjs';
 
 /**
  * @title Drag&Drop connected sorting
  */
 @Component({
-  selector: 'ivato-item-lists',
+  selector: 'pc-item-lists',
   templateUrl: './item-lists.component.html',
   styleUrls: ['./item-lists.component.css'],
 })
 export class ItemListsComponent implements OnInit {
   constructor(
-    private router: Router
+    private router: Router,
+    private orderService: OrderService
   ) {
-    console.log(this.router.config)
   }
 
+  public readonly subscriptions = new Subscription();
   public todo: Order[] = [];
-
   public inProgress: Order[] = [];
-
   public done: Order[] = [];
 
   public ngOnInit(): void {
-    this.todo = [
-      { id: '545345435', title: 'Plastic barbie', status: OrderStatus.toDo },
-      { id: '133445577', title: 'Skull head', status: OrderStatus.toDo },
-      { id: '9768567657', title: 'Bottle', status: OrderStatus.toDo },
-      { id: '6453453454', title: 'Case', status: OrderStatus.toDo }
-    ];
+    this.orderService.getOrders().subscribe((orders) => {
+      orders.forEach(order => {
+        switch (order.status) {
+          case OrderStatus.toDo:
+            this.todo.push(order);
+            break;
+          case OrderStatus.inProgress:
+          case OrderStatus.blocked:
+            this.todo.push(order);
+            break;
+          case OrderStatus.done:
+            this.todo.push(order);
+            break;
+        }
+      });
+    });
   }
 
-  drop(event: CdkDragDrop<BoardItem[]>) {
+  public drop(event: CdkDragDrop<BoardItem[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

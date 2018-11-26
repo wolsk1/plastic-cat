@@ -11,6 +11,7 @@ import {
 } from '@angular/material';
 
 import { NavigationComponent } from './fragments';
+import { CORE_SERVICES } from './services';
 
 @NgModule({
   imports: [
@@ -25,6 +26,9 @@ import { NavigationComponent } from './fragments';
   ],
   declarations: [
     NavigationComponent
+  ],
+  providers: [
+    CORE_SERVICES
   ],
   exports: [
     NavigationComponent

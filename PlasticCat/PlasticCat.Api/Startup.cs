@@ -41,7 +41,7 @@ namespace PlasticCat.Api
         {
             return app =>
             {
-                if (AppSettings.ShowErrorPage)
+                if (AppConfig.ShowErrorPage)
                 {
                     app.UseErrorPage();
                 }
@@ -59,7 +59,7 @@ namespace PlasticCat.Api
 
         private static void ConfigureCors(IAppBuilder app)
         {
-            if (AppSettings.CorsEnabled)
+            if (AppConfig.CorsEnabled)
             {
                 app.UseCors(GetCorsOptions());
             }
@@ -67,7 +67,7 @@ namespace PlasticCat.Api
 
         private static void ConfigureApiService(IAppBuilder app, HttpConfiguration httpConfiguration)
         {
-            app.Map($"/{AppSettings.ApiPrefix}", pipeline =>
+            app.Map($"/{AppConfig.ApiPrefix}", pipeline =>
             {
                 pipeline.UseWebApi(httpConfiguration);
             });
@@ -75,7 +75,9 @@ namespace PlasticCat.Api
 
         private static void ConfigureWebPages(IAppBuilder app, string wwwroot)
         {
-            app.Map("/auctor", pipeline =>
+            var appBaseUrl = string.IsNullOrEmpty(AppConfig.AppBaseUrl) ? "app" : AppConfig.AppBaseUrl;
+
+            app.Map($"/{appBaseUrl}", pipeline =>
             {
                 pipeline.Use((context, next) =>
                 {
@@ -83,12 +85,12 @@ namespace PlasticCat.Api
 
                     return SendHtmlFile(
                         context,
-                        path.Substring(0, path.LastIndexOf("auctor", StringComparison.OrdinalIgnoreCase)),
-                        Path.Combine(wwwroot, AppSettings.DefaultPage));
+                        path.Substring(0, path.LastIndexOf(appBaseUrl, StringComparison.OrdinalIgnoreCase)),
+                        Path.Combine(wwwroot, AppConfig.DefaultPage));
                 });
             });
 
-            app.Map("/error", pipeline =>
+            app.Map($"/{AppConfig.AppErrorUrl}", pipeline =>
             {
                 pipeline.Use((context, next) =>
                 {
@@ -96,8 +98,8 @@ namespace PlasticCat.Api
 
                     return SendHtmlFile(
                         context,
-                        path.Substring(0, path.LastIndexOf("error", StringComparison.OrdinalIgnoreCase)),
-                        Path.Combine(wwwroot, AppSettings.ErrorPage));
+                        path.Substring(0, path.LastIndexOf(AppConfig.AppErrorUrl, StringComparison.OrdinalIgnoreCase)),
+                        Path.Combine(wwwroot, AppConfig.ErrorPage));
                 });
             });
 
@@ -122,7 +124,7 @@ namespace PlasticCat.Api
                 return SendHtmlFile(
                     context,
                     context.Request.PathBase.ToString(),
-                    Path.Combine(wwwroot, isFile ? AppSettings.ErrorPage : AppSettings.DefaultPage),
+                    Path.Combine(wwwroot, isFile ? AppConfig.ErrorPage : AppConfig.DefaultPage),
                     isFile ? HttpStatusCode.NotFound : HttpStatusCode.OK);
             });
         }
@@ -167,16 +169,16 @@ namespace PlasticCat.Api
 
         private static CorsOptions GetCorsOptions()
         {
-            var headers = AppSettings.CorsAllowedHeaders;
-            var methods = AppSettings.CorsAllowedMethods;
-            var origins = AppSettings.CorsAllowedOrigins;
+            var headers = AppConfig.CorsAllowedHeaders;
+            var methods = AppConfig.CorsAllowedMethods;
+            var origins = AppConfig.CorsAllowedOrigins;
 
             var corsPolicy = new CorsPolicy
             {
                 AllowAnyHeader = headers.Length == 0,
                 AllowAnyMethod = methods.Length == 0,
                 AllowAnyOrigin = origins.Length == 0,
-                SupportsCredentials = AppSettings.CorsSupportsCredentials
+                SupportsCredentials = AppConfig.CorsSupportsCredentials
             };
 
             if (!corsPolicy.AllowAnyHeader)
