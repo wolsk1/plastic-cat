@@ -15,9 +15,12 @@ export const routing: ModuleWithProviders = RouterModule.forRoot([
         component: PlanningBoardComponent
       },
       {
-        path: 'order/:orderId',
-        component: OrderDetailsComponent,
+        path: 'order',
         children: [
+          {
+            path: ':orderId',
+            component: CreateOrderComponent
+          },
           {
             path: 'create',
             component: CreateOrderComponent

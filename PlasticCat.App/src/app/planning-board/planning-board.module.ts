@@ -7,7 +7,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import {
-  MatGridListModule
+  MatGridListModule, MatIconModule
 } from '@angular/material';
 
 import { routing } from './planning-board.routing';
@@ -27,6 +27,7 @@ import { SharedModule } from '../shared/shared.module';
     CdkTableModule,
     CdkTreeModule,
     MatGridListModule,
+    MatIconModule,
     routing
   ],
   declarations: [
