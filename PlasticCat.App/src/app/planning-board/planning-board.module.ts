@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import {
-  MatGridListModule, MatIconModule
+  MatGridListModule, 
+  MatIconModule, 
+  MatCardModule,
+  MatListModule,
+  MatInputModule,
+  MatAutocompleteModule,
+  MatButtonModule
 } from '@angular/material';
 
 import { routing } from './planning-board.routing';
@@ -20,6 +26,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     DragDropModule,
     ScrollingModule,
@@ -27,7 +34,12 @@ import { SharedModule } from '../shared/shared.module';
     CdkTableModule,
     CdkTreeModule,
     MatGridListModule,
+    MatInputModule,
     MatIconModule,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule,
+    MatAutocompleteModule,
     routing
   ],
   declarations: [

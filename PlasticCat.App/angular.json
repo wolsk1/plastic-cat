@@ -23,8 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/mat-style.scss",
-              "src/styles.scss"
+              "src/mat-style.scss"
             ],
             "scripts": []
           },

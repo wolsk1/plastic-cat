@@ -1,0 +1,13 @@
+.pc-create-order-container {
+    margin: 10px;
+    padding: 20px;
+}
+
+.pc-create-order-form {
+    display: flex;
+    flex-direction: column;
+}
+  
+.pc-create-order-form > * {
+    width: 100%;
+  }

@@ -1,0 +1,25 @@
+<mat-card class="pc-create-order-container">
+    <mat-card-title>Jauns pasutijums</mat-card-title>
+    <mat-card-content>
+        <form class="pc-create-order-form">
+            <mat-form-field>
+                <input matInput placeholder="Nosaukums">
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Apraksts"></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="text" placeholder="Klients" aria-label="Klients" matInput [formControl]="myControl" [matAutocomplete]="clientOptions">
+            </mat-form-field>
+        </form>
+        <mat-autocomplete #clientOptions="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let client of filteredClients | async" [value]="client">
+                {{client?.id}} - {{client?.fullName}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary">Izveidot</button>
+        <button mat-raised-button color="warn">Atcelt</button>
+    </mat-card-actions>
+</mat-card>
