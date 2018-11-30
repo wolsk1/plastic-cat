@@ -1,0 +1,38 @@
+<div class="pc-order-statuses-container">
+  <mat-card color="primary">
+    <mat-card-title>To do</mat-card-title>
+    <mat-card-content>
+      <div class="example-list" #todoList="cdkDropList" cdkDropList [cdkDropListData]="todo" [cdkDropListConnectedTo]="[inProgressList]"
+        (cdkDropListDropped)="drop($event)">
+        <div class="item-box" *ngFor="let item of todo" cdkDrag>
+          <div>#{{item.id}}</div>
+          <div>{{item.title}}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>In progress</mat-card-title>
+    <mat-card-content>
+      <div class="example-list" cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
+        [cdkDropListConnectedTo]="[doneList, todoList]" (cdkDropListDropped)="drop($event)">
+        <div class="item-box" *ngFor="let item of inProgress" cdkDrag (dblclick)="openDetails(item)" style="background:red">
+          <div>#{{item.id}}</div>
+          <div>{{item.title}}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>Done</mat-card-title>
+    <mat-card-content>
+      <div class="example-list" #doneList="cdkDropList" cdkDropList [cdkDropListData]="done" [cdkDropListConnectedTo]="[inProgressList, todoList]"
+        (cdkDropListDropped)="drop($event)">
+        <div class="item-box" *ngFor="let item of done" cdkDrag>
+          <div>#{{item.id}}</div>
+          <div>{{item.title}}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
