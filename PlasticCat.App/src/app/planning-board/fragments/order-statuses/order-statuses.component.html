@@ -4,10 +4,12 @@
     <mat-card-content>
       <div class="example-list" #todoList="cdkDropList" cdkDropList [cdkDropListData]="todo" [cdkDropListConnectedTo]="[inProgressList]"
         (cdkDropListDropped)="drop($event)">
-        <div class="item-box" *ngFor="let item of todo" cdkDrag>
-          <div>#{{item.id}}</div>
+        <mat-card *ngFor="let item of todo" cdkDrag>
+          <mat-card-content>
+            <div>#{{item.id}}</div>
           <div>{{item.title}}</div>
-        </div>
+          </mat-card-content>
+        </mat-card>
       </div>
     </mat-card-content>
   </mat-card>
