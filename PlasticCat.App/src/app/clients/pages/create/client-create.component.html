@@ -1,14 +1,14 @@
 <mat-card class="pc-create-client-container">
-  <mat-card-title>Jauns klients</mat-card-title>
-  <mat-card-content>
-      <form class="pc-create-client-form" [formGroup]="formGroup">
-          <mat-form-field>
-              <input matInput placeholder="Nosaukums" formControlName="fullName">
-          </mat-form-field>
-      </form>
-  </mat-card-content>
-  <mat-card-actions>
-      <button mat-raised-button color="primary">Izveidot</button>
-      <button mat-raised-button color="warn">Atcelt</button>
-  </mat-card-actions>
+    <mat-card-title>Jauns klients</mat-card-title>
+    <form class="pc-create-client-form" [formGroup]="formGroup" (ngSubmit)="create()">
+        <mat-card-content>
+            <mat-form-field>
+                <input matInput placeholder="Nosaukums" formControlName="fullName">
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button type="submit" mat-raised-button color="primary">Izveidot</button>
+            <button mat-raised-button color="warn">Atcelt</button>
+        </mat-card-actions>
+    </form>
 </mat-card>

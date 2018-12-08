@@ -7,8 +7,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import {
-  MatGridListModule, 
-  MatIconModule, 
+  MatGridListModule,
+  MatIconModule,
   MatCardModule,
   MatListModule,
   MatInputModule,
@@ -17,10 +17,17 @@ import {
 } from '@angular/material';
 
 import { routing } from './planning-board.routing';
-import { PLANNING_FRAGMENTS } from './fragments';
+import { BoardItemComponent, OrderFormComponent, OrderOverviewActionsComponent, OrderStatusesComponent } from './fragments';
 import { PLANNING_PAGES } from './pages';
 import { PLANNING_SERVICES } from './services';
 import { SharedModule } from '../shared/shared.module';
+
+const PLANNING_FRAGMENTS = [
+  BoardItemComponent,
+  OrderFormComponent,
+  OrderOverviewActionsComponent,
+  OrderStatusesComponent
+];
 
 @NgModule({
   imports: [
