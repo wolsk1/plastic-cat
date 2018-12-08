@@ -1,6 +1,11 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ClientsOverviewComponent, ClientDetailsComponent, ClientEditComponent } from './pages';
+import {
+  ClientsOverviewComponent,
+  ClientDetailsComponent,
+  ClientEditComponent,
+  ClientCreateComponent
+} from './pages';
 
 export const CLIENTS_ROUTES: ModuleWithProviders = RouterModule.forRoot([
   {
@@ -12,13 +17,15 @@ export const CLIENTS_ROUTES: ModuleWithProviders = RouterModule.forRoot([
       },
       {
         path: 'details/:orderId',
-        component: ClientDetailsComponent,
-        children: [
-          {
-            path: 'edit',
-            component: ClientEditComponent
-          }
-        ]
+        component: ClientDetailsComponent
+      },
+      {
+        path: 'edit/:orderId',
+        component: ClientEditComponent
+      },
+      {
+        path: 'create',
+        component: ClientCreateComponent
       }
     ]
   }

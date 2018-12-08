@@ -33,7 +33,6 @@ export class CreateOrderComponent implements OnInit {
     this.filteredClients = this.myControl.valueChanges
       .pipe(
         tap(value => console.log(value)),
-        // startWith(''),
         map(value => this.filterClients(value))
       );
 

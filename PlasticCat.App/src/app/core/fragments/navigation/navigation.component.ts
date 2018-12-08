@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NavConfig } from '../../models/navigation.models';
 
 @Component({
-  selector: 'ivato-nav',
+  selector: 'pc-nav',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
   public isMiniSidebar: boolean = true;

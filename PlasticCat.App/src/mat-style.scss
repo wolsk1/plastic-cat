@@ -2,11 +2,12 @@
 
 @include mat-core();
 
-$main-palete: $mat-green;
+$main-palete: $mat-grey;
+$warn-palete: $mat-red;
 
 $pc-primary: mat-palette($main-palete, 200, 100, 300);
-$pc-accent:  mat-palette($main-palete, 700, 600, 900);
-$pc-warn:    mat-palette($main-palete, A200, A100, A400);
+$pc-accent: mat-palette($main-palete, 700, 600, 900);
+$pc-warn: mat-palette($warn-palete, A200, A100, A400);
 
 $dark-theme: mat-dark-theme($pc-primary, $pc-accent, $pc-warn);
 $light-theme: mat-light-theme($pc-primary, $pc-accent, $pc-warn);

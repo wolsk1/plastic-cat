@@ -6,8 +6,8 @@
     "demo": {
       "root": "",
       "sourceRoot": "src",
-      "projectType": "application",
-      "prefix": "app",
+      "projectType": "application", 
+      "prefix": "pc",
       "schematics": {},
       "architect": {
         "build": {
