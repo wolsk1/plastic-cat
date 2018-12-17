@@ -178,8 +178,12 @@
     <Compile Include="AutofacInitializer.cs" />
     <Compile Include="ConnectionStrings.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Domain\Dto\PhysicalProperties.cs" />
+    <Compile Include="Domain\Dto\LegalProperties.cs" />
+    <Compile Include="Domain\Dto\Client.cs" />
     <Compile Include="Domain\Dto\Employee.cs" />
     <Compile Include="Domain\Dto\Order.cs" />
     <Compile Include="Domain\OrderStatus.cs" />
@@ -259,7 +263,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

@@ -22,10 +22,12 @@ export class CreateOrderComponent implements OnInit {
     this.clients = [
       {
         id: '00000001',
+        name: 'Janeks',
         fullName: 'Janeks Caurumins'
       },
       {
         id: '00000002',
+        name: 'Dainis',
         fullName: 'Dainis Zabaks'
       }
     ];

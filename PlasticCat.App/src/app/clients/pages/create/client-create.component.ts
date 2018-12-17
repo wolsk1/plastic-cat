@@ -11,6 +11,7 @@ import { ClientService } from '../../services/client.service';
 export class ClientCreateComponent  {
   public clients: Client[];
   public formGroup: FormGroup;
+  public isLegalClient: boolean;
 
   constructor(
     private builder: FormBuilder,
@@ -26,7 +27,7 @@ export class ClientCreateComponent  {
   public create(): void {
     if(this.formGroup.valid){
       this.clientService
-      .create({fullName: this.formGroup.get('fullName').value})
+      .create({name: this.formGroup.get('name').value})
       .subscribe((response) => console.log(response));
     }
   }

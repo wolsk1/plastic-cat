@@ -3,8 +3,9 @@
     <form class="pc-create-client-form" [formGroup]="formGroup" (ngSubmit)="create()">
         <mat-card-content>
             <mat-form-field>
-                <input matInput placeholder="Nosaukums" formControlName="fullName">
+                <mat-slide-toggle formControlName="isLegal"></mat-slide-toggle>
             </mat-form-field>
+            <ng-container *ngIf="isLegalClient; then legalClient else physicalClient"></ng-container>
         </mat-card-content>
         <mat-card-actions>
             <button type="submit" mat-raised-button color="primary">Izveidot</button>
@@ -12,3 +13,13 @@
         </mat-card-actions>
     </form>
 </mat-card>
+<ng-template #physicalClient>
+    <mat-form-field>
+        <input matInput placeholder="Vārds" formControlName="name">
+    </mat-form-field>
+</ng-template>
+<ng-template #legalClient>
+    <mat-form-field>
+        <input matInput placeholder="Nosaukums" formControlName="name">
+    </mat-form-field>
+</ng-template>

@@ -7,7 +7,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import {
-  MatGridListModule, MatCardModule, MatIconModule, MatButtonModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatListModule, MatDividerModule
+  MatGridListModule, MatCardModule, MatIconModule, MatButtonModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatListModule, MatDividerModule, MatSlideToggle, MatSlideToggleModule
 } from '@angular/material';
 
 import { SharedModule } from '../shared/shared.module';
@@ -44,7 +44,8 @@ const MAT_MODULES = [
   MatFormFieldModule,
   MatInputModule,
   MatListModule,
-  MatDividerModule
+  MatDividerModule,
+  MatSlideToggleModule
 ];
 
 @NgModule({
