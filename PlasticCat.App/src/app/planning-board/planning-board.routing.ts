@@ -6,26 +6,21 @@ import {
   PlanningBoardComponent
 } from './pages';
 
-export const routing: ModuleWithProviders = RouterModule.forRoot([
+export const routing: ModuleWithProviders = RouterModule.forChild([
   {
-    path: 'planning-board',
+    path: '',
+    component: PlanningBoardComponent
+  },
+  {
+    path: 'order',
     children: [
       {
-        path: '',
-        component: PlanningBoardComponent
+        path: ':orderId',
+        component: CreateOrderComponent
       },
       {
-        path: 'order',
-        children: [
-          {
-            path: ':orderId',
-            component: CreateOrderComponent
-          },
-          {
-            path: 'create',
-            component: CreateOrderComponent
-          }
-        ]
+        path: 'create',
+        component: CreateOrderComponent
       }
     ]
   }

@@ -7,7 +7,6 @@ import { ClientsModule } from './clients/clients.module';
 export const APP_MODULES = [
   SharedModule,
   CoreModule,
-  PlanningBoardModule,
   HomeModule,
   ClientsModule
 ];

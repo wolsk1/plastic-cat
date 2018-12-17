@@ -16,11 +16,16 @@ import {
   MatButtonModule
 } from '@angular/material';
 
-import { routing } from './planning-board.routing';
-import { BoardItemComponent, OrderFormComponent, OrderOverviewActionsComponent, OrderStatusesComponent } from './fragments';
-import { PLANNING_PAGES } from './pages';
-import { PLANNING_SERVICES } from './services';
 import { SharedModule } from '../shared/shared.module';
+import { routing } from './planning-board.routing';
+import {
+  BoardItemComponent,
+  OrderFormComponent,
+  OrderOverviewActionsComponent,
+  OrderStatusesComponent
+} from './fragments';
+import { CreateOrderComponent, OrderDetailsComponent, PlanningBoardComponent } from './pages';
+import { OrderService } from './services';
 
 const PLANNING_FRAGMENTS = [
   BoardItemComponent,
@@ -28,16 +33,25 @@ const PLANNING_FRAGMENTS = [
   OrderOverviewActionsComponent,
   OrderStatusesComponent
 ];
+const PLANNING_PAGES = [
+  CreateOrderComponent,
+  OrderDetailsComponent,
+  OrderOverviewActionsComponent,
+  OrderStatusesComponent,
+  PlanningBoardComponent
+];
+const PLANNING_SERVICES = [
+  OrderService
+]
 
 @NgModule({
   imports: [
-    BrowserModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     DragDropModule,
     ScrollingModule,
-    SharedModule,
     CdkTableModule,
     CdkTreeModule,
     MatGridListModule,

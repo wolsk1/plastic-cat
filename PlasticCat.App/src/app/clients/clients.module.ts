@@ -7,14 +7,28 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import {
-  MatGridListModule, MatCardModule, MatIconModule, MatButtonModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatListModule, MatDividerModule, MatSlideToggle, MatSlideToggleModule
+  MatGridListModule,
+  MatCardModule,
+  MatIconModule,
+  MatButtonModule,
+  MatAutocompleteModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
+  MatDividerModule,
+  MatSlideToggleModule
 } from '@angular/material';
 
 import { SharedModule } from '../shared/shared.module';
 import { CLIENTS_ROUTES } from './clients.routing';
-import { ClientsOverviewComponent, ClientDetailsComponent, ClientEditComponent, ClientCreateComponent } from './pages';
+import {
+  ClientsOverviewComponent,
+  ClientDetailsComponent,
+  ClientEditComponent,
+  ClientCreateComponent
+} from './pages';
 import { ClientOverviewActionsComponent } from './fragments';
-import { ClientService } from './services/client.service';
+import { ClientService } from './services';
 
 const CLIENT_PAGES = [
   ClientsOverviewComponent,
@@ -51,11 +65,11 @@ const MAT_MODULES = [
 @NgModule({
   imports: [
     BrowserModule,
+    SharedModule,
     MAT_MODULES,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule,
     CLIENTS_ROUTES
   ],
   declarations: [CLIENT_FRAGMENTS, CLIENT_PAGES],

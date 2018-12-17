@@ -9,7 +9,6 @@ export class SettingsService {
     public version: string;
     public basePath: string;
     public apiPath: string;
-    public country: string;
     public connectionProtocol: string;
     public appName: string;
 

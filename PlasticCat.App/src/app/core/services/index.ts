@@ -1,2 +1,2 @@
-export const CORE_SERVICES = [
-];
+export * from './settings.service';
+export * from './http.service';
