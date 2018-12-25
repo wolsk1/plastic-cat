@@ -1,25 +1,51 @@
 <mat-card class="pc-create-client-container">
     <mat-card-title>Jauns klients</mat-card-title>
-    <form class="pc-create-client-form" [formGroup]="formGroup" (ngSubmit)="create()">
+
+    <form (ngSubmit)="create()">
         <mat-card-content>
-            <mat-form-field>
-                <mat-slide-toggle formControlName="isLegal"></mat-slide-toggle>
-            </mat-form-field>
-            <ng-container *ngIf="isLegalClient; then legalClient else physicalClient"></ng-container>
+            <mat-slide-toggle #isLegal color="accent">Juridiska persona</mat-slide-toggle>
+            <ng-container *ngIf="isLegal.checked; then legalClient else physicalClient"></ng-container>
+
         </mat-card-content>
         <mat-card-actions>
-            <button type="submit" mat-raised-button color="primary">Izveidot</button>
+            <button type="submit" mat-raised-button
+                color="primary"
+                [disabled]="!isFormValid()">
+                Izveidot
+            </button>
             <button mat-raised-button color="warn">Atcelt</button>
         </mat-card-actions>
     </form>
 </mat-card>
 <ng-template #physicalClient>
-    <mat-form-field>
-        <input matInput placeholder="Vārds" formControlName="name">
-    </mat-form-field>
+    <form class="pc-create-client-form" [formGroup]="physicalForm">
+        <mat-form-field>
+            <input matInput placeholder="Vārds" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Uzvārds" formControlName="surname">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Tālrunis" formControlName="phone">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="E-pasts" formControlName="email">
+        </mat-form-field>
+    </form>
 </ng-template>
 <ng-template #legalClient>
-    <mat-form-field>
-        <input matInput placeholder="Nosaukums" formControlName="name">
-    </mat-form-field>
+    <form class="pc-create-client-form" #legalFormControl="ngForm" [formGroup]="legalForm">
+        <mat-form-field>
+            <input matInput placeholder="Nosaukums" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Reģistrācijas numurs" formControlName="registrationNumber">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Tālrunis" formControlName="phone">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="E-pasts" formControlName="email">
+        </mat-form-field>
+    </form>
 </ng-template>

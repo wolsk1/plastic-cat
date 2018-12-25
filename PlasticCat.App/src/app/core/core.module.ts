@@ -11,11 +11,6 @@ import {
 } from "@angular/material";
 
 import { NavigationComponent } from "./fragments";
-import { SettingsService } from "./services";
-
-const CORE_SERVICES = [
-  SettingsService
-];
 
 @NgModule({
   imports: [
@@ -29,7 +24,7 @@ const CORE_SERVICES = [
     MatDividerModule
   ],
   declarations: [NavigationComponent],
-  providers: [CORE_SERVICES],
+  providers: [],
   exports: [NavigationComponent]
 })
 export class CoreModule { }
