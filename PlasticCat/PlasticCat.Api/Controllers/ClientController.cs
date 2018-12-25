@@ -23,9 +23,11 @@ namespace PlasticCat.Api.Controllers
                 SqlHelper.SelectAll(Tables.Client.ToString())));
         }
 
-        public IHttpActionResult Create()
+        [HttpPost]
+        [Route("create")]
+        public IHttpActionResult Create(Client client)
         {
-            return Ok();
+            return Ok(client);
         }
     }
 }
