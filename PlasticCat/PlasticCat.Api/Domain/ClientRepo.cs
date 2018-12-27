@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using PlasticCat.Db;
@@ -26,6 +27,13 @@ namespace PlasticCat.Api.Domain
             cmd.Parameters.AddWithValue("@email", client.Email ?? Convert.DBNull);
 
             await dbManager.Execute(cmd);
+        }
+
+        public IEnumerable<Client> All()
+        {
+            return dbManager.ExecuteQueryFunc(
+                dbManager.ExecuteQuery<Client>,
+                SqlHelper.SelectAll(Tables.Client.ToString()));
         }
     }
 }

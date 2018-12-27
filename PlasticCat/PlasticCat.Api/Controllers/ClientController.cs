@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using PlasticCat.Api.Domain;
-using PlasticCat.Db;
 
 namespace PlasticCat.Api.Controllers
 {
@@ -19,7 +18,8 @@ namespace PlasticCat.Api.Controllers
         [Route("get")]
         public IHttpActionResult List()
         {
-            return Ok();
+            var items = clients.All();
+            return Ok(items);
         }
 
         [HttpPost]

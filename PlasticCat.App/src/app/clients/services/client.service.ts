@@ -6,7 +6,9 @@ import { Client } from "../models/client.models";
 import { HttpService } from "src/app/core/services/http.service";
 import { SettingsService } from "src/app/core/services";
 
-@Injectable()
+@Injectable({
+  providedIn: `root`
+})
 export class ClientService extends HttpService {
   constructor(
     http: HttpClient,

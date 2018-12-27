@@ -6,7 +6,7 @@
     "demo": {
       "root": "",
       "sourceRoot": "src",
-      "projectType": "application", 
+      "projectType": "application",
       "prefix": "pc",
       "schematics": {},
       "architect": {
@@ -23,7 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/mat-style.scss"
+              "src/mat-style.scss",
+              "src/main.scss"
             ],
             "scripts": []
           },

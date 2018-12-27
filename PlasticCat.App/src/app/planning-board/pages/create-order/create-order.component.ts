@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Client } from 'src/app/clients/models/client.models';
 import { Observable, of } from 'rxjs';
-import { map, startWith, tap } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
+import { ClientNamePipe } from 'src/app/clients/pipes';
 
 @Component({
   selector: 'pc-create-order',
@@ -15,6 +16,7 @@ export class CreateOrderComponent implements OnInit {
   public filteredClients: Observable<Client[]>;
 
   constructor(
+    private clientNamePipe: ClientNamePipe
   ) { }
 
   public ngOnInit(): void {
@@ -23,36 +25,36 @@ export class CreateOrderComponent implements OnInit {
       {
         id: '00000001',
         name: 'Janeks',
-        fullName: 'Janeks Caurumins'
+        surname: 'Caurumins'
       },
       {
         id: '00000002',
         name: 'Dainis',
-        fullName: 'Dainis Zabaks'
+        surname: 'Zabaks'
       }
     ];
 
     this.filteredClients = this.myControl.valueChanges
-      .pipe(
-        tap(value => console.log(value)),
-        map(value => this.filterClients(value))
-      );
+      .pipe(map(value => this.filterClients(value)));
 
     this.filteredClients = this.myControl.valueChanges
       .pipe(
         startWith<string | Client>(''),
-        map(value => typeof value === 'string' ? value : value.fullName),
+        map(value => typeof value === 'string' ? value : this.clientNamePipe.transform(value)),
         map(name => name ? this.filterClients(name) : this.clients.slice())
       );
   }
 
   public displayFn(client?: Client): string | undefined {
-    return client ? `${client.id} - ${client.fullName}` : undefined;
+    return client ? `${client.id} - ${this.clientNamePipe.transform(client)}` : undefined;
   }
 
+  // TODO move out filter logic to own component
   private filterClients(value: string): Client[] {
     const filterValue = value.toLowerCase();
-
-    return this.clients.filter(client => client.fullName.toLowerCase().includes(filterValue));
+    return this.clients.filter(client =>
+      this.clientNamePipe.transform(client)
+        .toLowerCase()
+        .includes(filterValue));
   }
 }

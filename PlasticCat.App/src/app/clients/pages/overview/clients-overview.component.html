@@ -1,10 +1,15 @@
 <pc-client-overview-actions></pc-client-overview-actions>
-<mat-list role="list">
-  <mat-list-item role="listitem" *ngFor="let client of clients | async">
-    <mat-divider [vertical]="true"></mat-divider>
-    <span>{{client?.id}}</span>
-    <mat-divider [vertical]="true"></mat-divider>
-    <span>{{client?.fullName}}</span>
-    <mat-divider [vertical]="true"></mat-divider>
-  </mat-list-item>
-</mat-list>
+<mat-card class="pc-view-container">
+  <mat-card-title>Klientu saraksts</mat-card-title>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let client of clients | async">
+        <mat-divider [vertical]="true"></mat-divider>
+        <span>{{client?.userId}}</span>
+        <mat-divider [vertical]="true"></mat-divider>
+        <span>{{client | clientName}}</span>
+        <mat-divider [vertical]="true"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

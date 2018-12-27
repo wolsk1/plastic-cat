@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../services/client.service';
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Client } from '../../models/client.models';
+import { tap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'pc-clients-overview',
@@ -11,13 +12,19 @@ import { Client } from '../../models/client.models';
 export class ClientsOverviewComponent implements OnInit {
   public clients: Observable<Client[]>
 
-  private readonly subs = new Subscription();
-
   constructor(
     private clientService: ClientService
-  ){}
+  ) { }
 
   public ngOnInit(): void {
-    this.clients = this.clientService.getAll();
+    this.clients = this.clientService.getAll()
+      // .pipe(
+      //   map(clients => clients.map(client => {
+      //     client.fullName = client.surname
+      //     ? `${client.name} ${client.surname}`
+      //     : client.name
+      //     return client;
+      //   }))
+      // );
   }
 }

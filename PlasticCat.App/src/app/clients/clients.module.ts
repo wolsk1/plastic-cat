@@ -29,6 +29,7 @@ import {
 } from './pages';
 import { ClientOverviewActionsComponent } from './fragments';
 import { ClientService } from './services';
+import { ClientNamePipe } from './pipes';
 
 const CLIENT_PAGES = [
   ClientsOverviewComponent,
@@ -41,8 +42,8 @@ const CLIENT_FRAGMENTS = [
   ClientOverviewActionsComponent
 ];
 
-const CLIENT_SERVICES = [
-  ClientService
+const CLIENT_PIPES = [
+  ClientNamePipe
 ];
 
 const MAT_MODULES = [
@@ -64,15 +65,14 @@ const MAT_MODULES = [
 
 @NgModule({
   imports: [
-    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
     SharedModule,
     MAT_MODULES,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     CLIENTS_ROUTES
   ],
-  declarations: [CLIENT_FRAGMENTS, CLIENT_PAGES],
-  providers: [CLIENT_SERVICES]
+  declarations: [CLIENT_FRAGMENTS, CLIENT_PAGES, CLIENT_PIPES],
+  providers: []
 })
 export class ClientsModule { }
