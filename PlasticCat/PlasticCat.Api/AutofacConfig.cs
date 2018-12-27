@@ -1,4 +1,5 @@
-﻿using PlasticCat.Db;
+﻿using PlasticCat.Api.Domain;
+using PlasticCat.Db;
 
 namespace PlasticCat.Api
 {
@@ -13,6 +14,7 @@ namespace PlasticCat.Api
         {
             base.Load(builder);
             RegisterDatabaseComponents(builder);
+            RegisterRepos(builder);
             RegisterControllers(builder);
         }
 
@@ -22,8 +24,6 @@ namespace PlasticCat.Api
                 .As<IDbManager>()
                 .SingleInstance()
                 .WithParameter("connectionString", AppConfig.DbConnectionString);
-
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
         }
 
         private static void RegisterControllers(ContainerBuilder builder)
@@ -34,6 +34,12 @@ namespace PlasticCat.Api
                 .AsSelf();
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+        }
+
+        private static void RegisterRepos(ContainerBuilder builder)
+        {            
+            builder.RegisterType<ClientRepo>()
+                .AsSelf();
         }
     }
 }

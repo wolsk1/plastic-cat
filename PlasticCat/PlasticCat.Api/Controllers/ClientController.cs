@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Threading.Tasks;
+using System.Web.Http;
 using PlasticCat.Api.Domain;
 using PlasticCat.Db;
 
@@ -7,27 +8,27 @@ namespace PlasticCat.Api.Controllers
     [RoutePrefix("clients")]
     public class ClientController : BaseApiController
     {
-        private readonly IDbManager dbManager;
+        private readonly ClientRepo clients;
 
-        public ClientController(IDbManager dbManager)
+        public ClientController(ClientRepo clients)
         {
-            this.dbManager = dbManager;
+            this.clients = clients;
         }
 
         [HttpGet]
         [Route("get")]
         public IHttpActionResult List()
         {
-            return Ok(dbManager.ExecuteQueryFunc(
-                dbManager.ExecuteQuery<Employee>, 
-                SqlHelper.SelectAll(Tables.Client.ToString())));
+            return Ok();
         }
 
         [HttpPost]
         [Route("create")]
-        public IHttpActionResult Create(Client client)
+        public async Task<IHttpActionResult> Create(Client client)
         {
-            return Ok(client);
+            await clients.Create(client);
+
+            return Ok();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace PlasticCat.Db
+﻿using System.Threading.Tasks;
+
+namespace PlasticCat.Db
 {
     using System;
     using System.Collections.Generic;
@@ -28,6 +30,17 @@
                 connection.Close();
 
                 return response;
+            }
+        }
+
+        public async Task Execute(SqlCommand command)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                command.Connection = connection;
+                await command.ExecuteNonQueryAsync();
+                connection.Close();
             }
         }
 

@@ -181,6 +181,7 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Domain\ClientRepo.cs" />
     <Compile Include="Domain\Dto\PhysicalProperties.cs" />
     <Compile Include="Domain\Dto\LegalProperties.cs" />
     <Compile Include="Domain\Dto\Client.cs" />
