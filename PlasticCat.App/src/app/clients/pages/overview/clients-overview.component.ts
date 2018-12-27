@@ -7,7 +7,7 @@ import { tap, map } from 'rxjs/operators';
 @Component({
   selector: 'pc-clients-overview',
   templateUrl: './clients-overview.component.html',
-  // styleUrls: [ './clients-overview.component.css' ]
+  styleUrls: [ './clients-overview.component.scss' ]
 })
 export class ClientsOverviewComponent implements OnInit {
   public clients: Observable<Client[]>

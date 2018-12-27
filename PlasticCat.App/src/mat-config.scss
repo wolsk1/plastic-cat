@@ -1,0 +1,11 @@
+@import '../node_modules/@angular/material/theming';
+
+$main-palete: $mat-grey;
+$accent-palete: $mat-green;
+$warn-palete: $mat-red;
+
+$pc-primary: mat-palette($main-palete);
+$pc-accent: mat-palette($accent-palete);
+$pc-warn: mat-palette($warn-palete);
+
+$pc-item: mat-color($pc-primary, 600);

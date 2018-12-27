@@ -1,14 +1,6 @@
-@import '../node_modules/@angular/material/theming';
+@import './mat-config.scss';
 
 @include mat-core();
-
-$main-palete: $mat-grey;
-$accent-palete: $mat-green;
-$warn-palete: $mat-red;
-
-$pc-primary: mat-palette($main-palete);
-$pc-accent: mat-palette($accent-palete);
-$pc-warn: mat-palette($warn-palete);
 
 $dark-theme: mat-dark-theme($pc-primary, $pc-accent, $pc-warn);
 $light-theme: mat-light-theme($pc-primary, $pc-accent, $pc-warn);
