@@ -22,10 +22,6 @@ export const CLIENTS_ROUTES: ModuleWithProviders = RouterModule.forRoot([
       {
         path: 'edit/:orderId',
         component: ClientEditComponent
-      },
-      {
-        path: 'create',
-        component: ClientCreateComponent
       }
     ]
   }

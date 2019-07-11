@@ -1,10 +1,12 @@
-<pc-client-overview-actions></pc-client-overview-actions>
+<ivato-client-overview-actions></ivato-client-overview-actions>
 <mat-card class="pc-view-container">
   <mat-card-title>Klientu saraksts</mat-card-title>
   <mat-card-content>
     <mat-list role="list">
-      <mat-list-item class="pc-list-item" role="listitem"
-      *ngFor="let client of clients | async">
+      <mat-list-item 
+        class="pc-list-item" 
+        role="listitem"
+        *ngFor="let client of clients | async">
         <mat-divider [vertical]="true"></mat-divider>
         <span>{{client?.userId}}</span>
         <mat-divider [vertical]="true"></mat-divider>

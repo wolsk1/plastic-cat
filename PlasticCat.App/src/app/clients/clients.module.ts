@@ -16,7 +16,8 @@ import {
   MatInputModule,
   MatListModule,
   MatDividerModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatDialogModule
 } from '@angular/material';
 
 import { SharedModule } from '../shared/shared.module';
@@ -60,7 +61,8 @@ const MAT_MODULES = [
   MatInputModule,
   MatListModule,
   MatDividerModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatDialogModule
 ];
 
 @NgModule({
@@ -73,6 +75,7 @@ const MAT_MODULES = [
     CLIENTS_ROUTES
   ],
   declarations: [CLIENT_FRAGMENTS, CLIENT_PAGES, CLIENT_PIPES],
-  providers: []
+  providers: [],
+  entryComponents: [ClientCreateComponent]
 })
 export class ClientsModule { }
