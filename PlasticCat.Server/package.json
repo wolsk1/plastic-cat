@@ -1,0 +1,15 @@
+{
+  "name": "black-cat",
+  "version": "0.1.0",
+  "description": "Plastic cat backend app",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "Volkovs, Imants",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~4.17.1",
+    "open": "^6.4.0"
+  }
+}
