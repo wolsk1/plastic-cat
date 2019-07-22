@@ -1,18 +1,22 @@
 <ivato-client-overview-actions></ivato-client-overview-actions>
 <mat-card class="pc-view-container">
-  <mat-card-title>Klientu saraksts</mat-card-title>
   <mat-card-content>
-    <mat-list role="list">
-      <mat-list-item 
-        class="pc-list-item" 
-        role="listitem"
-        *ngFor="let client of clients | async">
-        <mat-divider [vertical]="true"></mat-divider>
-        <span>{{client?.userId}}</span>
-        <mat-divider [vertical]="true"></mat-divider>
-        <span>{{client | clientName}}</span>
-        <mat-divider [vertical]="true"></mat-divider>
-      </mat-list-item>
-    </mat-list>
+    <table mat-table class="pc-table mat-elevation-z8"
+      [dataSource]="clients | async">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Klienta Nr.</th>
+        <td mat-cell *matCellDef="let client"> 
+          {{client.userId}} 
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="clientName">
+        <th mat-header-cell *matHeaderCellDef>Nosaukums</th>
+        <td mat-cell *matCellDef="let client"> 
+          {{client | clientName}} 
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
   </mat-card-content>
 </mat-card>

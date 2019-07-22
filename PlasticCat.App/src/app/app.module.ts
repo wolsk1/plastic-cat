@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { APP_MODULES } from './app.modules';
-import { routing } from './app.routing';
+import { APP_ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
 import { VENDOR_MODULES } from './vendor.modules';
 
@@ -12,7 +12,7 @@ import { VENDOR_MODULES } from './vendor.modules';
     BrowserModule,
     VENDOR_MODULES,
     FormsModule,
-    routing,
+    APP_ROUTES,
     APP_MODULES
   ],
   declarations: [

@@ -6,5 +6,6 @@ $dark-theme: mat-dark-theme($pc-primary, $pc-accent, $pc-warn);
 $light-theme: mat-light-theme($pc-primary, $pc-accent, $pc-warn);
 
 @include angular-material-theme($dark-theme);
-@include mat-button-theme($dark-theme);
+@include mat-button-theme($light-theme);
 @include mat-slide-toggle-theme($light-theme);
+@include mat-table-theme($light-theme);
