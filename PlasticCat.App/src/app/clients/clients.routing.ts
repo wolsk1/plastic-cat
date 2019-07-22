@@ -7,22 +7,17 @@ import {
   ClientCreateComponent
 } from './pages';
 
-export const CLIENTS_ROUTES: ModuleWithProviders = RouterModule.forRoot([
+export const CLIENTS_ROUTES: ModuleWithProviders = RouterModule.forChild([
   {
-    path: 'clients',
-    children: [
-      {
-        path: '',
-        component: ClientsOverviewComponent
-      },
-      {
-        path: 'details/:orderId',
-        component: ClientDetailsComponent
-      },
-      {
-        path: 'edit/:orderId',
-        component: ClientEditComponent
-      }
-    ]
+    path: '',
+    component: ClientsOverviewComponent
+  },
+  {
+    path: 'details/:orderId',
+    component: ClientDetailsComponent
+  },
+  {
+    path: 'edit/:orderId',
+    component: ClientEditComponent
   }
 ]);

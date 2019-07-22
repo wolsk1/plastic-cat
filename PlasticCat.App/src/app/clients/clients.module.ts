@@ -31,6 +31,7 @@ import {
 import { ClientOverviewActionsComponent } from './fragments';
 import { ClientService } from './services';
 import { ClientNamePipe } from './pipes';
+import { MAT_MODULES } from '../vendor.modules';
 
 const CLIENT_PAGES = [
   ClientsOverviewComponent,
@@ -47,29 +48,8 @@ const CLIENT_PIPES = [
   ClientNamePipe
 ];
 
-const MAT_MODULES = [
-  CdkTableModule,
-  CdkTreeModule,
-  DragDropModule,
-  ScrollingModule,
-  MatGridListModule,
-  MatCardModule,
-  MatIconModule,
-  MatButtonModule,
-  MatAutocompleteModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatListModule,
-  MatDividerModule,
-  MatSlideToggleModule,
-  MatDialogModule
-];
-
 @NgModule({
   imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
     SharedModule,
     MAT_MODULES,
     CLIENTS_ROUTES
