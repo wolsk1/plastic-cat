@@ -1,0 +1,21 @@
+{
+  "name": "red-cat",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-app": "cd ./PlasticCat.App && npm run-script build",
+    "server": "cd ./PlasticCat.Server && npm run-script start",
+    "start": "npm run build-app && npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wolsk1/plastic-cat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wolsk1/plastic-cat/issues"
+  },
+  "homepage": "https://github.com/wolsk1/plastic-cat#readme"
+}
