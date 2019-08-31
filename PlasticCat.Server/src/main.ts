@@ -1,15 +1,15 @@
 "use strict";
-var express = require('express');
-var path = require('path');
-var open = require('open');
-var clientsRepo = require('./repos/clients.repo');
+import express from 'express';
+import open from 'open';
+import { clientsRepo } from './repos/clients.repo';
 
 var port = 3000;
-var APP_FOLDER = '../wwwroot';
+var APP_FOLDER = './app/client';
 var app = express();
 
 // Static files
-app.get('*.*', express.static(APP_FOLDER, { maxAge: '1y' }));
+// app.get('*.*', express.static(APP_FOLDER, { maxAge: '1y' }));
+app.get('*.*', express.static(APP_FOLDER));
 
 // ---- SERVE APLICATION PATHS
 app.all('*', function (req, res) {

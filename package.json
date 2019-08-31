@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-app": "cd ./PlasticCat.App && npm run-script build",
-    "server": "cd ./PlasticCat.Server && npm run-script start",
-    "start": "npm run build-app && npm run server"
+    "clean": "rimraf app",
+    "build:app": "cd ./PlasticCat.App && npm run-script build",
+    "build:server": "cd ./PlasticCat.Server && npm run-script build",
+    "build": "npm run clean && npm run build:app && npm run build:server",
+    "start": "node app/main.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/wolsk1/plastic-cat/issues"
   },
-  "homepage": "https://github.com/wolsk1/plastic-cat#readme"
+  "homepage": "https://github.com/wolsk1/plastic-cat#readme",
+  "devDependencies": {
+    "rimraf": "^3.0.0"
+  }
 }

@@ -4,12 +4,21 @@
   "description": "Plastic cat backend app",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "build": "webpack --config webpack.config.js",
+    "start": "npm run-script && node ../app/main.js"
   },
   "author": "Volkovs, Imants",
   "license": "MIT",
   "dependencies": {
     "express": "~4.17.1",
     "open": "^6.4.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "ts-loader": "^6.0.4",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
   }
 }
