@@ -2,6 +2,7 @@
 import express from 'express';
 import open from 'open';
 import { clientsRepo } from './repos/clients.repo';
+import { SettingsRepo } from './repos/settings.repo';
 
 var port = 3000;
 var APP_FOLDER = './app/client';
@@ -27,11 +28,6 @@ app.listen(port, function listenFn(error) {
     }
 });
 
-const API_BASE_ROUTE = '/api'
 // TODO add routes
 clientsRepo(app);
-
-app.get('/settings', function (req, res) {
-    const settings = {};
-    res.send(settings)
-})
+new SettingsRepo(app);
