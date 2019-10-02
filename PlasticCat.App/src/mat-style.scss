@@ -9,3 +9,4 @@ $light-theme: mat-light-theme($pc-primary, $pc-accent, $pc-warn);
 @include mat-button-theme($light-theme);
 @include mat-slide-toggle-theme($light-theme);
 @include mat-table-theme($light-theme);
+@include mat-card-theme($light-theme);

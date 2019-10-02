@@ -1,22 +1,24 @@
-<mat-card class="pc-create-client-container">
+<div class="pc-create-client-container">
     <mat-card-title>Jauns klients</mat-card-title>
 
-    <form (ngSubmit)="create()">
+    <form [formGroup]="createForm" (ngSubmit)="create()">
         <mat-card-content>
-            <mat-slide-toggle #isLegal color="accent">Juridiska persona</mat-slide-toggle>
+            <mat-slide-toggle #isLegal color="accent" formControlName="isLegalClient">
+                Juridiska persona
+            </mat-slide-toggle>
             <ng-container *ngIf="isLegal.checked; then legalClient else physicalClient"></ng-container>
 
         </mat-card-content>
         <mat-card-actions>
             <button type="submit" 
                 mat-raised-button
-                [disabled]="!isFormValid()">
+                [disabled]="!isFormValid">
                 Izveidot
             </button>
-            <button mat-raised-button color="warn">Atcelt</button>
+            <button mat-raised-button color="warn" (click)="close()">Atcelt</button>
         </mat-card-actions>
     </form>
-</mat-card>
+</div>
 <ng-template #physicalClient>
     <form class="pc-create-client-form" [formGroup]="physicalForm">
         <mat-form-field>

@@ -1,19 +1,79 @@
 import { ROUTE_CONSTANTS } from '../route.constants';
-import { Express } from 'express';
+import { Express, Request, Response } from 'express';
+import { AppConfig } from '../app.config';
+import { CatResponse } from '../models';
+import low from 'lowdb';
+import FileSync from 'lowdb/adapters/FileSync';
 
-const BASE_URL = `${ROUTE_CONSTANTS}/clients`;
+export function ClientsRepo(app: Express): void {
+    const baseUrl = `${AppConfig.apiUrl}/clients`;
+    const collectionName = 'clients';
+    const ID_LENGTH = 10;
+    const ID_PREFIX = 'C';
+    const CLIENT_COUNT_KEY = 'count';
 
-export function clientsRepo(app: Express): void {
-    app.get(BASE_URL, getClients);
+    app.get(baseUrl, getClients);
+    app.post(`${baseUrl}/create`, create);
 
-}
+    const clientDb = low(new FileSync('./app/clients.json'));
+    clientDb.defaults({ clients: [], count: 1 })
+        .write();
+    const generateId = idGeneratorFactory(ID_PREFIX);
 
-function getClients(request, response) {
-    response.send([
-        new Client('0001', 'SIA "Gurķis"', undefined, '+37129799290'),
-        new Client('0011', 'AS "Zapte"'),
-        new Client('0002', 'Zigis', 'Caurums')
-    ]);
+    async function getInitialCount(): Promise<any> {
+        return await clientDb.get(CLIENT_COUNT_KEY).value();
+    }
+
+    async function updateCount(): Promise<void> {
+        await clientDb
+            .update(CLIENT_COUNT_KEY, (n: number) => ++n)
+            .write();        
+    }
+
+    function getClients(request: Request, response: Response): void {
+        response.send(clientDb.get(collectionName).value());
+    }
+
+    async function create(request: Request, response: Response): Promise<void> {
+        console.log('received client', request.body);
+        const payload = request.body;
+
+        payload.id = await generateId();
+        clientDb.get(collectionName)
+            .push(request.body)
+            .write();
+        response.send(new CatResponse(true));
+    }
+
+    async function getZeroCount(length: number): Promise<number> {
+        const initialCount = await getInitialCount();
+        const nonZeroDigits = initialCount.toString().length;
+
+        return length - nonZeroDigits;
+    }
+
+    async function getZeros(): Promise<string> {
+        const zeroCount = await getZeroCount(ID_LENGTH);
+        let zeros = '';
+
+        for (let i = 1; i <= zeroCount; i++) {
+            zeros += '0';
+        }
+
+        return zeros;
+    }
+
+    function idGeneratorFactory(
+        prefix: string = ''
+    ): () => Promise<string> {
+        return async () => {
+            let zeros = await getZeros();
+            const initialCount = await getInitialCount();
+            await updateCount();
+
+            return `${prefix}${zeros}${initialCount}`;
+        }
+    }
 }
 
 export class Client {

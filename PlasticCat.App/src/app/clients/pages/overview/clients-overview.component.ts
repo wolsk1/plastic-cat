@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../services/client.service';
 import { Observable, of } from 'rxjs';
 import { Client } from '../../models/client.models';
-import { tap, map } from 'rxjs/operators';
+import { tap, map, take } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { ClientCreateComponent } from '../create/client-create.component';
 
 @Component({
   selector: 'pc-clients-overview',
@@ -11,30 +13,31 @@ import { tap, map } from 'rxjs/operators';
 })
 export class ClientsOverviewComponent implements OnInit {
   public clients: Observable<Client[]>;
-  public displayedColumns: string[] = ['id', 'clientName'];
+  public displayedColumns: string[] = [
+    'id',
+    'registrationNumber', 
+    'clientName',
+    'phone',
+    'email'
+  ];
 
   constructor(
-    private clientService: ClientService
+    private clientService: ClientService,
+    private matDialog: MatDialog
   ) { }
 
   public ngOnInit(): void {
-    this.clients = of([
-      {
-        userId: '0001',
-        name: 'SIA Gurķis',
-        registrationNumber: '',
-        phone: '',
-        email: ''
-      }
-    ]);
-    // this.clients = this.clientService.getAll()
-    // .pipe(
-    //   map(clients => clients.map(client => {
-    //     client.fullName = client.surname
-    //     ? `${client.name} ${client.surname}`
-    //     : client.name
-    //     return client;
-    //   }))
-    // );
+    this.loadClients();
+  }
+
+  public openCreateForm(): void {
+    this.matDialog
+      .open(ClientCreateComponent)
+      .afterClosed().pipe(take(1))
+      .subscribe(() => this.loadClients());
+  }
+
+  private loadClients(): void {
+    this.clients = this.clientService.getAll();
   }
 }

@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SettingsService {
-    constructor() {
-        this.onInit();
-    }
+    public settings: Observable<Settings>;
 
-    public version: string;
-    public basePath: string;
-    public apiPath: string;
-    public connectionProtocol: string;
-    public appName: string;
-
-    private onInit() {
-        try {
-            Object.assign(this,  window["_appSettings"]);
-        } catch (ex) {
-            console.log((<Error>ex).message);
-        }
+    constructor(
+        private http: HttpClient
+    ) {
+        this.settings = this.http.get<Settings>('api/settings')
+        .pipe(take(1));
     }
 }
+
+export class Settings {
+    public app: any;
+    public apiUrl: string;
+};

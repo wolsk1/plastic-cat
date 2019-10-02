@@ -7,7 +7,7 @@ export class SettingsRepo {
     constructor(
         app: Express
     ) {
-        app.get(this.baseUrl)
+        app.get(this.baseUrl, this.getSettings);
     }
 
     public getSettings(request, response): void {

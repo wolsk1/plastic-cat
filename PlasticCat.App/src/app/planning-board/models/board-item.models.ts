@@ -4,7 +4,7 @@ export interface BoardItem {
 }
 
 export interface Order {
-  id: string;
+  id?: string;
   subject: string;
   description: string;
   status: OrderStatus;

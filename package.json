@@ -8,7 +8,8 @@
     "build:app": "cd ./PlasticCat.App && npm run-script build",
     "build:server": "cd ./PlasticCat.Server && npm run-script build",
     "build": "npm run clean && npm run build:app && npm run build:server",
-    "start": "node app/main.js"
+    "start": "node app/main.js",
+    "rebuild:server": "npm run build:server && npm run start"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "homepage": "https://github.com/wolsk1/plastic-cat#readme",
   "devDependencies": {
     "rimraf": "^3.0.0"
+  },
+  "dependencies": {
+    "lowdb": "^1.0.0"
   }
 }
